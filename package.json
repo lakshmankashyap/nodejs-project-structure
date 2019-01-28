@@ -1,0 +1,24 @@
+{
+  "name": "nodejs-project-structure",
+  "version": "1.0.0",
+  "description": "Best node js project structure,For API built with NodeJS, Express, MongoDB and TypeScript",
+  "author": "Igor Rosliakov",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "web": "cd ./client/clientApp && npm run start",
+    "web-p": "cd ./client/clientApp && npm run start",
+    "web-p-dev": "cd ./client && npm run start-dev",
+    "web-p-prod": "cd ./client && npm run start-prod",
+    "server": "cd ./server && npm run dev"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://sozdayka@github.com/sozdayka/nodejs-project-structure.git"
+  },
+  "license": "ISC",
+  "bugs": {
+    "url": "https://sozdayka@github.com/sozdayka/nodejs-project-structure/issues"
+  },
+  "homepage": "https://sozdayka@github.com/sozdayka/nodejs-project-structure#readme"
+}
