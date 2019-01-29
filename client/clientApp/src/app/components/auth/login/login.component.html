@@ -1,0 +1,30 @@
+<div class="container">
+  <div class="d-flex align-items-center justify-content-center">
+    <div class="col-4">
+      <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+        
+        <h1 class="h3 mb-3 font-weight-normal">Please sign in</h1>
+        
+        <div class="mb-3">
+          <label for="email">Email</label>
+          <input type="email" formControlName="email" [ngClass]="{ 'is-invalid': submitted && f.email.errors }" class="form-control" id="email" placeholder="" value="" >
+          <div *ngIf="submitted && f.email.errors" class="invalid-feedback">
+              Email is required
+          </div>
+        </div>
+        <div class="mb-3">
+          <label for="pass">Password</label>
+          <input type="password" formControlName="password" [ngClass]="{ 'is-invalid': submitted && f.password.errors }" class="form-control" id="pass" placeholder="" value="">
+          <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
+            <div *ngIf="f.password.errors.required">Password is required</div>
+          </div>
+        </div>
+        <div class="mb-3">
+            Not a member? <a href="/auth/reg">Sign up now</a>
+        </div>
+        <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
+      
+      </form>
+    </div>
+  </div>
+</div>

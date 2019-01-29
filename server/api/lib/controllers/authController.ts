@@ -24,7 +24,7 @@ export class AuthController {
         var authService = new AuthService();
 
         authService.registrationCheckExistUser(req.body.email).then(data => {
-            console.log(data)
+            // console.log(data)
             if (data.errorMessage) {
                 res.json(data);
                 return
@@ -34,8 +34,8 @@ export class AuthController {
             newUser.password = hashedPassword;
             authService.registration(newUser).then(resReg => {
                 res.json(resReg);
-                console.log("******resReg******")
-                console.log(resReg)
+                // console.log("******resReg******")
+                // console.log(resReg)
             })
 
         });
@@ -56,14 +56,13 @@ export class AuthController {
     public login(req: Request, res: Response) {
         var authService = new AuthService();
         authService.login(req.body.email).then(data => {
-            if (data.errorMessage) {
-                res.json(data);
+            if (!data.user) {
+                res.json({ errorMessage: "User Not Found" });
                 return
             }
-            console.log(data)
             var passwordIsValid = bcryptjs.compareSync(req.body.password, data.user.password);
             if (!passwordIsValid) {
-                res.json({ errorMessage: "User Not Found" });
+                res.json({ errorMessage: "Invalid email or password" });
                 return
             }
             res.json(data)

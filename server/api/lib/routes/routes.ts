@@ -23,7 +23,7 @@ export class Routes {
         // Auth
         app.route('/auth/profile')
         .post(this.authController.check);
-        app.route('/auth/register')
+        app.route('/auth/registration')
         .post(this.authController.registration);
         app.route('/auth/login')
         .post(this.authController.login);

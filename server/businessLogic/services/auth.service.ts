@@ -3,10 +3,10 @@ import { UserRepository } from "../../dataAccess";
 import { IUserViewModel } from "../../../shared/viewModels";
 
 export class AuthService implements IAuthService {
-    public async registrationCheckExistUser(email: string): Promise<{ errorMessage: string}> {
+    public async registrationCheckExistUser(email: string): Promise<{ errorMessage: string }> {
         try {
             var result = await UserRepository.find({ email: email })
-            if(result.length){
+            if (result.length) {
                 return {
                     errorMessage: "User exist"//result.errors
                 };
@@ -16,7 +16,7 @@ export class AuthService implements IAuthService {
             };
         } catch (error) {
             return {
-                errorMessage:  error._message || 'Sorry something went wrong.'
+                errorMessage: error._message || 'Sorry something went wrong.'
             };
         }
     }
@@ -32,7 +32,7 @@ export class AuthService implements IAuthService {
         } catch (error) {
             return {
                 user: null,
-                errorMessage:  error._message || 'Sorry something went wrong.'
+                errorMessage: error._message || 'Sorry something went wrong.'
             };
         }
     }
@@ -41,10 +41,16 @@ export class AuthService implements IAuthService {
     public async login(email: string): Promise<{ errorMessage: string, user: IUserViewModel }> {
         try {
             var result = await UserRepository.find({ email: email })
-            if(result.length){
+
+            if (result.length) {
                 let userData = new UserRepository(result);
+                // console.log("************************")
+                // console.log(result[0].email)
+                // console.log(result[0].password)
+                // console.log(userData.email)
+                // console.log(userData.password)
                 return {
-                    user: userData,
+                    user: result[0],
                     errorMessage: ""//result.errors
                 };
             }
@@ -55,7 +61,7 @@ export class AuthService implements IAuthService {
         } catch (error) {
             return {
                 user: null,
-                errorMessage:  error._message || 'Sorry something went wrong.'
+                errorMessage: error._message || 'Sorry something went wrong.'
             };
         }
     }
