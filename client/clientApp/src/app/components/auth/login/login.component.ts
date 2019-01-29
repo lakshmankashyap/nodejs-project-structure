@@ -35,7 +35,6 @@ export class LoginComponent implements OnInit {
       let resData = res.data;
 
       if(!resData.errorMessage){
-        
         this.localStorageService.set('token',resData.token);
         return;
       }

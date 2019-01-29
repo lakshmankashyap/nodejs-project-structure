@@ -22,7 +22,6 @@ export class AuthService implements IAuthService {
     }
     public async registration(user: IUserViewModel): Promise<{ errorMessage: string, user: IUserViewModel }> {
         let newUser = new UserRepository(user);
-        console.log(newUser)
         try {
             var result = await newUser.save();
             return {

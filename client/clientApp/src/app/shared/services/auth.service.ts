@@ -9,7 +9,7 @@ export class AuthService extends BaseService {
         super();
     }
 
-    public login(model: {username: string, password: string}) : AxiosPromise<IAuthResponseModel> {
+    public login(model: {email: string, password: string}) : AxiosPromise<IAuthResponseModel> {
         return axios.post(environment().apiUrl + "auth/login", model);
     }
     

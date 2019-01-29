@@ -38,12 +38,14 @@ export class RegistrationComponent implements OnInit {
     this.authService.register(this.registerForm.value).then(res => {
       let getRes = res.data;
 
-      if(!getRes.errorMessage){
+      if(getRes.errorMessage){
         alert(getRes.errorMessage);
+        return
+      }
+        alert("success registration");
         this.router.navigateByUrl('/auth');
         return;
-      }
-      alert('1 ' + getRes.errorMessage);
+      
     });
 
   }

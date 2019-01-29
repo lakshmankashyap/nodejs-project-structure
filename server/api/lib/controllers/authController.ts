@@ -33,6 +33,9 @@ export class AuthController {
             let newUser = new UserRepository(req.body);
             newUser.password = hashedPassword;
             authService.registration(newUser).then(resReg => {
+                // // var token = jsonwebtoken.sign({ id: user._id, fullName: user.fullName, email: user.email }, authConfig.secret, {
+                // //     expiresIn: 86400 // expires in 24 hours
+                // // });
                 res.json(resReg);
                 // console.log("******resReg******")
                 // console.log(resReg)
@@ -55,6 +58,8 @@ export class AuthController {
 
     public login(req: Request, res: Response) {
         var authService = new AuthService();
+        console.log("Token - ")
+        console.log(req.body)
         authService.login(req.body.email).then(data => {
             if (!data.user) {
                 res.json({ errorMessage: "User Not Found" });
@@ -65,7 +70,10 @@ export class AuthController {
                 res.json({ errorMessage: "Invalid email or password" });
                 return
             }
-            res.json(data)
+            var token = jsonwebtoken.sign({ id: data.user._id, fullName: data.user.firstName, email: data.user.email }, authConfig.privateKEY, authConfig.signOptions);
+console.log("Token - " + token)
+            res.json({ auth: true, token: token})
+            // res.status(200).send({ status: 'ok', text: 'Succsess', auth: true, token: token, user: user });
         });
         // UserRepository.findOne({ email: req.body.email }, (err, user) => {
         //     if (err) return res.status(500).send('Error on the server.');
