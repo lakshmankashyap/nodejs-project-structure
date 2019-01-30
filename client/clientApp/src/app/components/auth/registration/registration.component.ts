@@ -13,8 +13,9 @@ import { Router } from '@angular/router';
   styleUrls: ['./registration.component.scss']
 })
 export class RegistrationComponent implements OnInit {
-  registerForm: FormGroup;
-  submitted = false;
+  public registerForm: FormGroup;
+  public submitted: boolean = false;
+  public hasError: string = ""
 
   constructor(private formBuilder: FormBuilder,
     private authService: AuthService,
@@ -39,7 +40,7 @@ export class RegistrationComponent implements OnInit {
       let getRes = res.data;
 
       if(getRes.errorMessage){
-        alert(getRes.errorMessage);
+        this.hasError = getRes.errorMessage;
         return
       }
         alert("success registration");
