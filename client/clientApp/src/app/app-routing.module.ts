@@ -13,38 +13,67 @@ import { AdminDashboardComponent } from './components/admin/dashboard/admin-dash
 import { AdminBookComponent } from './components/admin/book/admin-book.component';
 import { AdminUserComponent } from './components/admin/user/admin-user.component';
 import { UserHomeComponent } from './components/user/home/user-home.component';
+import { AuthGuard } from './shared/guards/auth.guard';
 
 
 const routes: Routes = [
-  { path: '',   redirectTo: 'home', pathMatch: 'full' },
-  { path: 'home', 
-    component: HomeComponent 
+  { path: '', redirectTo: 'home', pathMatch: 'full' },
+  {
+    path: 'home',
+    component: HomeComponent,
+    canActivate: [AuthGuard],
+    data: {
+      allowedRoles: ['admin', 'author']
+    },
   },
-  { path: 'books', 
-    component: BookComponent 
+  {
+    path: 'books',
+    component: BookComponent,
+    canActivate: [AuthGuard],
+    data: {
+      allowedRoles: ['admin', 'author']
+    },
   },
-  { path: 'user', 
-    component: UserComponent, 
+  {
+    path: 'user',
+    component: UserComponent,
+    canActivate: [AuthGuard],
+    data: {
+      allowedRoles: ['admin', 'author']
+    },
     children: [
       { path: '', component: UserHomeComponent },
       { path: 'profile', component: UserProfileComponent },
     ]
   },
-  { path: 'auth', 
-    component: AuthComponent, 
+  {
+    path: 'auth',
+    component: AuthComponent,
     children: [
-      { path: '',   redirectTo: 'login', pathMatch: 'full' },
+      { path: '', redirectTo: 'login', pathMatch: 'full' },
       { path: 'login', component: LoginComponent },
       { path: 'reg', component: RegistrationComponent },
     ]
   },
-  { path: 'admin', 
-    component: AdminComponent, 
+  {
+    path: 'admin',
+    component: AdminComponent,
+    canActivate: [AuthGuard],
+    data: {
+      allowedRoles: ['admin']
+    },
     children: [
-      { path: '',   redirectTo: 'dashboard', pathMatch: 'full' },
-      { path: 'dashboard', component: AdminDashboardComponent},
+      {
+        path: '',
+        redirectTo: 'dashboard',
+        pathMatch: 'full',
+      },
+      {
+        path: 'dashboard',
+        component: AdminDashboardComponent,
+      },
       { path: 'books', component: AdminBookComponent },
-      { path: 'users', component: AdminUserComponent },    
+      { path: 'users', component: AdminUserComponent },
     ]
   },
   { path: '**', component: ErrorPageComponent }

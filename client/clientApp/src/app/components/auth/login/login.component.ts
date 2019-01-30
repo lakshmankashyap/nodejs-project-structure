@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { AuthService } from 'src/app/shared/services/auth.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { LocalStorageService } from 'src/app/shared/services/localStorage.service';
+import { IAuthResponseModel } from 'src/app/shared/model/auth-response.model';
 
 @Component({
   selector: 'login',
@@ -35,7 +36,7 @@ export class LoginComponent implements OnInit {
       let resData = res.data;
 
       if(!resData.errorMessage){
-        this.localStorageService.set('token',resData.token);
+        this.localStorageService.set<string>('token',resData.token);
         return;
       }
       alert(resData.errorMessage);

@@ -3,8 +3,11 @@ import axios, { AxiosPromise } from "axios"
 import { IUserViewModel } from "../../../../../../shared/viewModels";
 import { environment } from '../../environment/environment';
 import { IAuthResponseModel } from '../model/auth-response.model';
+import { LocalStorageService } from './localStorage.service';
 
 export class AuthService extends BaseService {
+    private localStorageService: LocalStorageService = new LocalStorageService();
+
     constructor() {
         super();
     }
@@ -17,4 +20,7 @@ export class AuthService extends BaseService {
         return axios.post(environment().apiUrl + "auth/registration", model);
     }
 
+    public isAuthenticated(): boolean{
+        return this.localStorageService.get<string>('token')? true: false
+    }
 }

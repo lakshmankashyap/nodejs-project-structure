@@ -15,7 +15,7 @@ export const AuthMiddleware = (req: RequestModel<{}>, res: Response, next: NextF
   var token = req.headers['x-access-token'];
   if (!token) return res.status(401).send({ auth: false, message: 'No token provided.' });
 
-  jsonwebtoken.verify(token, authConfig.secret, function (err, decoded) {
+  jsonwebtoken.verify(token, authConfig.publicKEY, function (err, decoded) {
     if (err) {
       return res.status(401).send({ auth: false, message: 'Failed to authenticate token.' });
     }

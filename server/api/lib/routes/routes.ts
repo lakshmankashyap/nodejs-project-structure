@@ -22,7 +22,7 @@ export class Routes {
 
         // Auth
         app.route('/auth/profile')
-        .post(this.authController.check);
+        .post(AuthMiddleware, this.authController.check);
         app.route('/auth/registration')
         .post(this.authController.registration);
         app.route('/auth/login')
@@ -30,13 +30,13 @@ export class Routes {
 
         // Book 
         app.route('/book')
-            .get(this.bookController.add);
+            .get(AuthMiddleware, this.bookController.add);
         app.route('/book/get/:authorId')
-            .get(AuthMiddleware,this.bookController.get)
+            .get(AuthMiddleware, this.bookController.get)
         app.route('/contact/:bookId')
-            .get(AuthMiddleware,this.bookController.getById)
-            .put(AuthMiddleware,this.bookController.update)
-            .delete(AuthMiddleware,this.bookController.delete)
+            .get(AuthMiddleware, this.bookController.getById)
+            .put(AuthMiddleware, this.bookController.update)
+            .delete(AuthMiddleware, this.bookController.delete)
 
         // Author 
         // app.route('/author')
