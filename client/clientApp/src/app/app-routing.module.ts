@@ -14,6 +14,7 @@ import { AdminBookComponent } from './components/admin/book/admin-book.component
 import { AdminUserComponent } from './components/admin/user/admin-user.component';
 import { UserHomeComponent } from './components/user/home/user-home.component';
 import { AuthGuard } from './shared/guards/auth.guard';
+import { RoleEnum } from '../../../../shared/enum';
 
 
 const routes: Routes = [
@@ -23,7 +24,7 @@ const routes: Routes = [
     component: HomeComponent,
     canActivate: [AuthGuard],
     data: {
-      allowedRoles: ['admin', 'author']
+      allowedRoles: [RoleEnum.AdminRole, RoleEnum.UserRole]
     },
   },
   {
@@ -31,7 +32,7 @@ const routes: Routes = [
     component: BookComponent,
     canActivate: [AuthGuard],
     data: {
-      allowedRoles: ['admin', 'author']
+      allowedRoles: [ RoleEnum.UserRole]
     },
   },
   {
@@ -39,7 +40,7 @@ const routes: Routes = [
     component: UserComponent,
     canActivate: [AuthGuard],
     data: {
-      allowedRoles: ['admin', 'author']
+      allowedRoles: [RoleEnum.AdminRole, RoleEnum.UserRole]
     },
     children: [
       { path: '', component: UserHomeComponent },
@@ -60,7 +61,7 @@ const routes: Routes = [
     component: AdminComponent,
     canActivate: [AuthGuard],
     data: {
-      allowedRoles: ['admin']
+      allowedRoles: [RoleEnum.AdminRole]
     },
     children: [
       {
@@ -76,6 +77,7 @@ const routes: Routes = [
       { path: 'users', component: AdminUserComponent },
     ]
   },
+  { path: 'error404', component: ErrorPageComponent },
   { path: '**', component: ErrorPageComponent }
 ];
 

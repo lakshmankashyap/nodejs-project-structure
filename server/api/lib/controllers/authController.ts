@@ -30,6 +30,8 @@ export class AuthController {
             var hashedPassword = bcryptjs.hashSync(req.body.password, 8);
             let newUser = new UserRepository(req.body);
             newUser.password = hashedPassword;
+            newUser.roleType = 2;
+            newUser.status = false;
             authService.registration(newUser).then(resReg => {
                 res.json(resReg);
             })
