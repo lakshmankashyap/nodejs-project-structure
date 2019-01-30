@@ -15,18 +15,19 @@
         <li class="nav-item active">
           <a class="nav-link" routerLink="/">Home</a>
         </li>
-        <li class="nav-item">
+        <li class="nav-item" *ngIf="autorithe">
           <a class="nav-link" routerLink="/books">Books</a>
         </li>
-        <li class="nav-item">
+        <li class="nav-item" *ngIf="autorithe">
           <a class="nav-link" href="#">Services</a>
         </li>
         <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">My Account</a>
             <div class="dropdown-menu" aria-labelledby="dropdown01">
-              <a class="dropdown-item" routerLink="/admin">Admin</a>
-              <a class="dropdown-item" routerLink="/auth">Login</a>
-              <a class="dropdown-item" routerLink="/auth/reg">Registration</a>
+              <a class="dropdown-item" routerLink="/admin" *ngIf="autorithe">Admin</a>
+              <a class="dropdown-item" (click)="logout()" *ngIf="autorithe">Logout</a>
+              <a class="dropdown-item" routerLink="/auth"  *ngIf="!autorithe">Login</a>
+              <a class="dropdown-item" routerLink="/auth/reg" *ngIf="!autorithe">Registration</a>
             </div>
           </li>
       </ul>

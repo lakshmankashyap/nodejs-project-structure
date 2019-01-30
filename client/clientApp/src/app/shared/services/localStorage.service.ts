@@ -13,4 +13,7 @@ export class LocalStorageService {
         localStorage.setItem(param, JSON.stringify(model));
     }
 
+    public delete(): void{
+        localStorage.clear();
+    }
 }

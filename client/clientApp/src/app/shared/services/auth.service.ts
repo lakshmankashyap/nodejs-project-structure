@@ -20,6 +20,10 @@ export class AuthService extends BaseService {
         return axios.post(environment().apiUrl + "auth/registration", model);
     }
 
+    public logout() : void {
+        this.localStorageService.delete();
+    }
+
     public isAuthenticated(): boolean{
         return this.localStorageService.get<string>('token')? true: false
     }
