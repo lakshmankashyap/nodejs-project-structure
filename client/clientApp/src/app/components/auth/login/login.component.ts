@@ -37,9 +37,11 @@ export class LoginComponent implements OnInit {
 
       if(!resData.errorMessage){
         this.localStorageService.set<string>('token',resData.token);
+        this.router.navigate(['/']);
         return;
       }
       alert(resData.errorMessage);
+      
     });
 
   }

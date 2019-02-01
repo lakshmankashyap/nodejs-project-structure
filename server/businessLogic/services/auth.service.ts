@@ -48,6 +48,13 @@ export class AuthService implements IAuthService {
                 // console.log(result[0].password)
                 // console.log(userData.email)
                 // console.log(userData.password)
+                if(!userData.status){
+                    return {
+                        user: result[0],
+                        errorMessage: "Account not confirm, plz wait"//result.errors
+                    };
+                }
+
                 return {
                     user: result[0],
                     errorMessage: ""//result.errors
@@ -55,7 +62,7 @@ export class AuthService implements IAuthService {
             }
             return {
                 user: null,
-                errorMessage: ""//result.errors
+                errorMessage: "Invalid email or password"//result.errors
             };
         } catch (error) {
             return {

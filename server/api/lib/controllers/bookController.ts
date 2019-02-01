@@ -34,8 +34,14 @@ export class BookController {
         });
     }
 
-
     public get(req: RequestModel<{ authorId: string }>, res: Response) {
+        var bookService = new BookService();
+        bookService.get().then(data => {
+            console.log("++++++++")
+        })
+    }
+
+    public get1(req: RequestModel<{ authorId: string }>, res: Response) {
         let authorId = req.params.authorId;
         BookRepository.find({ authorId: authorId }, (err, book) => {
             if (err) return res.status(500).send('Error on the server.');

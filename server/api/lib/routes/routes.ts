@@ -29,10 +29,9 @@ export class Routes {
 
         // Book 
         app.route('/book')
-            .get(AuthMiddleware, this.bookController.add);
-        app.route('/book/get/:authorId')
-            .get(AuthMiddleware, this.bookController.get)
-        app.route('/contact/:bookId')
+            .get(this.bookController.get)
+            .post(AuthMiddleware, this.bookController.get)
+        app.route('/book/:bookId')
             .get(AuthMiddleware, this.bookController.getById)
             .put(AuthMiddleware, this.bookController.update)
             .delete(AuthMiddleware, this.bookController.delete)

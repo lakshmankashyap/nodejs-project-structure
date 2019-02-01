@@ -14,7 +14,7 @@ import { AdminBookComponent } from './components/admin/book/admin-book.component
 import { AdminUserComponent } from './components/admin/user/admin-user.component';
 import { UserHomeComponent } from './components/user/home/user-home.component';
 import { AuthGuard } from './shared/guards/auth.guard';
-import { RoleEnum } from '../../../../shared/enum';
+import { RoleType } from '../../../../shared/viewModels/enum';
 
 
 const routes: Routes = [
@@ -24,7 +24,7 @@ const routes: Routes = [
     component: HomeComponent,
     canActivate: [AuthGuard],
     data: {
-      allowedRoles: [RoleEnum.AdminRole, RoleEnum.UserRole]
+      allowedRoles: [RoleType.Admin, RoleType.User]
     },
   },
   {
@@ -32,7 +32,7 @@ const routes: Routes = [
     component: BookComponent,
     canActivate: [AuthGuard],
     data: {
-      allowedRoles: [ RoleEnum.UserRole]
+      allowedRoles: [ RoleType.User]
     },
   },
   {
@@ -40,7 +40,7 @@ const routes: Routes = [
     component: UserComponent,
     canActivate: [AuthGuard],
     data: {
-      allowedRoles: [RoleEnum.AdminRole, RoleEnum.UserRole]
+      allowedRoles: [RoleType.Admin, RoleType.User]
     },
     children: [
       { path: '', component: UserHomeComponent },
@@ -61,7 +61,7 @@ const routes: Routes = [
     component: AdminComponent,
     canActivate: [AuthGuard],
     data: {
-      allowedRoles: [RoleEnum.AdminRole]
+      allowedRoles: [RoleType.Admin]
     },
     children: [
       {

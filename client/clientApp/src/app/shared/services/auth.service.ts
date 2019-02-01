@@ -7,7 +7,7 @@ import { IUserViewModel } from "../../../../../../shared/viewModels";
 import { environment } from '../../environment/environment';
 import { IAuthResponseModel } from '../model/auth-response.model';
 import { LocalStorageService } from './localStorage.service';
-import { RoleEnum } from '../../../../../../shared/enum';
+import { RoleType } from '../../../../../../shared/viewModels/enum';
 
 export class AuthService extends BaseService {
     private localStorageService: LocalStorageService = new LocalStorageService();
