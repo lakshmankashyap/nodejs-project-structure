@@ -15,6 +15,7 @@ import { AdminUserComponent } from './components/admin/user/admin-user.component
 import { UserHomeComponent } from './components/user/home/user-home.component';
 import { AuthGuard } from './shared/guards/auth.guard';
 import { RoleType } from '../../../../shared/viewModels/enum';
+import { AdminAuthorComponent } from './components/admin/author/admin-author.component';
 
 
 const routes: Routes = [
@@ -74,7 +75,9 @@ const routes: Routes = [
         component: AdminDashboardComponent,
       },
       { path: 'books', component: AdminBookComponent },
+      { path: 'authors', component: AdminAuthorComponent },
       { path: 'users', component: AdminUserComponent },
+      { path: '**', redirectTo: 'dashboard' }
     ]
   },
   { path: 'error404', component: ErrorPageComponent },

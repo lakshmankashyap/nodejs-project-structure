@@ -36,14 +36,14 @@ export class Routes {
             .put(AuthMiddleware, this.bookController.update)
             .delete(AuthMiddleware, this.bookController.delete)
 
-        // Author 
-        // app.route('/author')
-        //     .get(AuthMiddleware,this.authorController.get)
-        //     .post(AuthMiddleware,this.authorController.add);
-        // app.route('/author/:authorId')
-        //     .get(AuthMiddleware,this.authorController.getById)
-        //     .put(AuthMiddleware,this.authorController.update)
-        //     .delete(AuthMiddleware,this.authorController.delete)
+        //Author 
+        app.route('/author')
+            .get(AuthMiddleware,this.authorController.get)
+            .post(AuthMiddleware,this.authorController.add);
+        app.route('/author/:authorId')
+            .get(AuthMiddleware,this.authorController.getById)
+            .put(AuthMiddleware,this.authorController.update)
+            .delete(AuthMiddleware,this.authorController.delete)
 
     }
 }

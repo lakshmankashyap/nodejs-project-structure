@@ -12,7 +12,7 @@ import { IAuthResponseModel } from 'src/app/shared/model/auth-response.model';
 })
 export class LoginComponent implements OnInit {
   public loginForm: FormGroup;
-  public submitted = false;
+  public submitted:boolean = false;
 
   constructor(private formBuilder: FormBuilder,
     private authService: AuthService,
@@ -20,6 +20,10 @@ export class LoginComponent implements OnInit {
     private router : Router) { }
 
   ngOnInit() {
+    if(this.authService.isAuthenticated()){
+      this.router.navigate(['/']);
+    }
+
     this.loginForm = this.formBuilder.group({
       email: ['', [Validators.required, Validators.email]],
       password: ['', [Validators.required, Validators.minLength(3)]]

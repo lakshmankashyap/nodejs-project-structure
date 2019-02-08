@@ -9,7 +9,7 @@ mongoose.model('Book', new mongoose.Schema({
   img: String,
   text: String,
   status: Boolean,
-  author: [mongoose.Schema.Types.ObjectId]
+  authors: [mongoose.Schema.Types.ObjectId]
 }));
 
 export const BookRepository = mongoose.model<IBookEntity>('Book');

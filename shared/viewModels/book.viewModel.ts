@@ -1,5 +1,9 @@
 export interface IBookViewModel {
     _id:any;
-    title: String
-    authorId: String
+    title: String,
+    description: String,
+    img: String,
+    text: String,
+    status: Boolean,
+    authors: [any]
 }

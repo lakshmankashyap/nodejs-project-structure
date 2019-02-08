@@ -16,6 +16,10 @@ export class HeaderComponent implements OnInit {
   ngOnInit() {
   }
 
+  ngDoCheck(){
+    this.autorithe = this.authService.isAuthenticated();
+  }
+
   public logout(): void{
     this.authService.logout();
     this.router.navigateByUrl('/auth');

@@ -22,6 +22,10 @@ export class RegistrationComponent implements OnInit {
     private router : Router) { }
 
   ngOnInit() {
+    if(this.authService.isAuthenticated()){
+      this.router.navigate(['/']);
+    }
+    
     this.registerForm = this.formBuilder.group({
       firstName: ['', Validators.required],
       lastName: ['', Validators.required],

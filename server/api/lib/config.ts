@@ -22,7 +22,7 @@ export const authConfig = {
         issuer: paramConfig.issuer,
         subject: paramConfig.subject,
         audience: paramConfig.audience,
-        expiresIn: "12h",
+        expiresIn: "24h",
         algorithm: ["RS256"]
     }
 };

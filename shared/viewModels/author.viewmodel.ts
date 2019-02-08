@@ -1,4 +1,4 @@
 export interface IAuthorViewModel {
-    _id:any;
+    _id: any;
     name: String
 }

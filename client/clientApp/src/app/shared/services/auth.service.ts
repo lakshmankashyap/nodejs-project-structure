@@ -33,11 +33,11 @@ export class AuthService extends BaseService {
         // console.log(!this.jwtHelper.isTokenExpired( this.localStorageService.get<string>('token')))
         // const tokenPayload = decode(this.localStorageService.get<string>('token'));
         // console.log(tokenPayload);
-        return this.localStorageService.get<string>('token') ? true : false
+        return this.localStorageService.getItem('token') ? true : false
     }
 
     public isAccessRole(): Number {
-        const token = localStorage.getItem('token');
+        const token = this.localStorageService.getItem('token');
         const tokenPayload: IUserViewModel = decode(token);
         return tokenPayload['role'];
     }

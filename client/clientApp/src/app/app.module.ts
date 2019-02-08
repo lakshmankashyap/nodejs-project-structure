@@ -4,6 +4,7 @@ import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AppComponent } from './app.component';
+import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 
 import { BookComponent } from './components/book/book.component';
 import { UserComponent } from './components/user/user.component';
@@ -19,6 +20,7 @@ import { UserModule } from './components/user/user.module';
 import { AuthService } from './shared/services/auth.service';
 import { LocalStorageService } from './shared/services/localStorage.service';
 import { AuthGuard } from './shared/guards/auth.guard';
+import { AuthorService } from './shared/services/author.service';
 
 @NgModule({
   declarations: [
@@ -40,10 +42,12 @@ import { AuthGuard } from './shared/guards/auth.guard';
     AppRoutingModule,
     AdminModule,
     AuthModule,
-    UserModule
+    UserModule,
+    NgbModule
   ],
   providers: [
     AuthService,
+    AuthorService,
     LocalStorageService,
     AuthGuard
   ],

@@ -6,7 +6,11 @@ export class LocalStorageService {
     }
 
     public get<T>(param: string): T{
-        return JSON.parse(localStorage.getItem(param)) as T; 
+            return JSON.parse(localStorage.getItem(param)) as T; 
+    }
+
+    public getItem(param: string){
+        return localStorage.getItem(param);
     }
 
     public set<T>(param: string, model: T): void{

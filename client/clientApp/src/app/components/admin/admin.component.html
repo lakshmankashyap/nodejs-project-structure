@@ -1,1 +1,31 @@
-<router-outlet></router-outlet>
+<div class="container">
+    <div class="row">
+        <div class="col-4">
+            <div class="list-group">
+                <a [routerLink]="['/admin/dashboard']" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}"
+                    class="list-group-item list-group-item-action">
+                    Dashboard
+                </a>
+                <a [routerLink]="['/admin/books']" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}"
+                    class="list-group-item list-group-item-action">
+                    Books
+                </a>
+                <a [routerLink]="['/admin/authors']" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}"
+                    class="list-group-item list-group-item-action">
+                    Authors
+                </a>
+                <a [routerLink]="['/admin/user']" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}"
+                    class="list-group-item list-group-item-action">
+                    Users
+                </a>
+                <a [routerLink]="['/admin/']" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}"
+                    class="list-group-item list-group-item-action disabled">
+
+                </a>
+            </div>
+        </div>
+        <div class="col-8">
+            <router-outlet></router-outlet>
+        </div>
+    </div>
+</div>

@@ -75,8 +75,8 @@ export class BookService implements IBookService {
     public async get(): Promise<{ errorMessage: string, book: IBookViewModel }> {
         try {
             var result = await BookRepository.find();
-            console.log("iog")
-console.log(result)
+// //             console.log("iog")
+// // console.log(result)
 return null
             // if (result.errors) {
             //     return {
@@ -119,5 +119,12 @@ return null
                 errorMessage: error._message || 'Sorry something went wrong.'
             };
         }
+    }
+    public async update(book: IBookViewModel): Promise<{ errorMessage: string, book: IBookViewModel }> {
+        return null
+    }
+
+    public async delete(id: string): Promise<{ errorMessage: string, book: IBookViewModel }> {
+        return null
     }
 }

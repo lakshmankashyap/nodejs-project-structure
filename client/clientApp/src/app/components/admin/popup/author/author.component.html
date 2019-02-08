@@ -1,0 +1,22 @@
+<div class="modal-header">
+  <h4 class="modal-title" id="modal-primary-title">Managment author</h4>
+  <button type="button" class="close" aria-label="Close" (click)="close()">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+<form [formGroup]="authorForm" (ngSubmit)="save()">
+  <div class="modal-body">
+    <div class="form-group">
+      <label for="exampleFormControlInput1">Name</label>
+      <input type="text" formControlName="name" [ngClass]="{ 'is-invalid': submitted && f.name.errors }" class="form-control" id="exampleFormControlInput1">
+      <div *ngIf="submitted && f.name.errors" class="invalid-feedback">
+          <div *ngIf="f.name.errors.required">Name is required</div>
+        </div>
+    </div>
+
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-outline-dark" type="submit">Save</button>
+    <button type="button" class="btn btn-outline-dark" (click)="close()">Close</button>
+  </div>
+</form>
