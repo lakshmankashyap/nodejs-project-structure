@@ -40,7 +40,11 @@ export class LoginComponent implements OnInit {
       let resData = res.data;
 
       if(!resData.errorMessage){
-        this.localStorageService.set<string>('token',resData.token);
+        this.localStorageService.set('token',resData.token);
+
+        this.router.routeReuseStrategy.shouldReuseRoute = function () {
+          return false;
+        }
         this.router.navigate(['/']);
         return;
       }

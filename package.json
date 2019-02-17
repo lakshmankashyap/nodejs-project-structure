@@ -20,5 +20,11 @@
   "bugs": {
     "url": "https://sozdayka@github.com/sozdayka/nodejs-project-structure/issues"
   },
-  "homepage": "https://sozdayka@github.com/sozdayka/nodejs-project-structure#readme"
+  "homepage": "https://sozdayka@github.com/sozdayka/nodejs-project-structure#readme",
+  "dependencies": {
+    "@types/react": "^16.8.2",
+    "@types/react-dom": "^16.8.0",
+    "react": "^16.8.1",
+    "react-dom": "^16.8.1"
+  }
 }

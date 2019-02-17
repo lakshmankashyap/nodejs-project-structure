@@ -13,8 +13,8 @@ export class LocalStorageService {
         return localStorage.getItem(param);
     }
 
-    public set<T>(param: string, model: T): void{
-        localStorage.setItem(param, JSON.stringify(model));
+    public set(param: string, model: string): void{
+        localStorage.setItem(param, model);
     }
 
     public delete(): void{

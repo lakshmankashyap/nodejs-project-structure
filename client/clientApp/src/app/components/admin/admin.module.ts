@@ -18,7 +18,10 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     AdminUserComponent,
     PopupBookComponent,
     PopupAuthorComponent,
-    AdminAuthorComponent
+    AdminAuthorComponent,
+
+
+
   ],
   imports: [
     CommonModule, 
@@ -26,7 +29,9 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     NgbModule.forRoot(),
     FormsModule,
     ReactiveFormsModule,
+
   ],
+
   entryComponents: [
     PopupBookComponent,
     PopupAuthorComponent

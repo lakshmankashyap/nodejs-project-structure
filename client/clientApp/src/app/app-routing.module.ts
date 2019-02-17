@@ -64,6 +64,7 @@ const routes: Routes = [
     data: {
       allowedRoles: [RoleType.Admin]
     },
+    // ladChildren: './components/admin/admin.module#AdminModule',
     children: [
       {
         path: '',

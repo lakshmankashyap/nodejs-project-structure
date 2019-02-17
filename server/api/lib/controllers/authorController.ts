@@ -21,6 +21,7 @@ export class AuthorController {
 
 
     public get(req: RequestModel<{}>, res: Response) {
+        console.log("asdsadsad")
         AuthorRepository.find({}, (err, author) => {
             if (err) return res.status(500).send('Error on the server.');
             res.json(author);
